@@ -1,0 +1,24 @@
+{
+  "name": "jekyll-search-js",
+  "version": "1.0.0",
+  "description": "Search through your jekyll pages, posts, or any collection the ES6 way",
+  "main": "search.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daviddarnes/jekyll-search-js.git"
+  },
+  "keywords": [
+    "jekyll",
+    "search",
+    "es6"
+  ],
+  "author": "David Darnes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daviddarnes/jekyll-search-js/issues"
+  },
+  "homepage": "https://github.com/daviddarnes/jekyll-search-js#readme"
+}
