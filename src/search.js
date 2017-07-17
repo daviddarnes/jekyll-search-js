@@ -3,9 +3,6 @@ class jekyllSearch {
     this.dataSource = dataSource;
     this.searchField = document.querySelector(searchField);
     this.resultsList = document.querySelector(resultsList);
-
-    this.items = this.fetchedData;
-    this.results = this.findResults;
   }
 
   fetchedData() {
@@ -17,14 +14,14 @@ class jekyllSearch {
   }
 
   findResults() {
-    return this.items.filter(item => {
-      const regex = new RegExp(termToMatch, 'gi');
+    return this.fetchedData().filter(item => {
+      const regex = new RegExp(this.searchField.value, 'gi');
       return item.title.match(regex) || item.content.match(regex);
     })
   }
 
   displayResults() {
-    const html = this.results.map(item => {
+    const html = this.findResults().map(item => {
       return `
         <li class="item  item--result">
             <article class="article">
@@ -33,7 +30,7 @@ class jekyllSearch {
             </article>
         </li>`;
     }).join('');
-    if ((this.results.length == 0) || (this.value == '')) {
+    if ((this.findResults().length == 0) || (this.searchField.value == '')) {
       this.resultsList.innerHTML = `<p>Sorry, nothing was found</p>`;
     } else {
       this.resultsList.innerHTML = html;
@@ -42,10 +39,10 @@ class jekyllSearch {
 
   init() {
     this.searchField.addEventListener('keyup', this.displayResults);
-    this.searchField.addEventListener('keypress', function(event) {
-        if (event.keyCode == 13) {
-          event.preventDefault();
-        }
+    this.searchField.addEventListener('keypress', event => {
+      if (event.keyCode == 13) {
+        event.preventDefault();
+      }
     });
   }
 }
