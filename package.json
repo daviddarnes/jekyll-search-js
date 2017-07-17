@@ -2,7 +2,7 @@
   "name": "jekyll-search-js",
   "version": "1.0.0",
   "description": "Search through your jekyll pages, posts, or any collection the ES6 way",
-  "main": "search.js",
+  "main": ["dist/search.js", "dist/fetch.js", "dist/search.json"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
