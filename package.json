@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "description": "Search through your jekyll pages, posts, or any collection the ES6 way",
   "main": [
-    "search.js",
-    "node_modules/fetch.js",
-    "search.json"
+    "./src/search.js",
+    "./src/search.json",
+    "./src/fetch.js"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel source --presets babel-preset-es2015 --out-dir distribution"
+    "build": "cp ./node_modules/whatwg-fetch/fetch.js ./src"
   },
   "repository": {
     "type": "git",
@@ -26,11 +25,7 @@
     "url": "https://github.com/daviddarnes/jekyll-search-js/issues"
   },
   "homepage": "https://github.com/daviddarnes/jekyll-search-js#readme",
-  "dependencies": {
-    "whatwg-fetch": "^2.0.3"
-  },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1"
+    "whatwg-fetch": "^2.0.3"
   }
 }
