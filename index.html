@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Jekyll Search JS Demo</title>
+  </head>
+  <style media="screen">
+    body {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 300px;
+      width: 20vw;
+    }
+    input {
+      font-family: inherit;
+      font-size: inherit;
+    }
+  </style>
+  <body>
+    <h1>Search</h1>
+    <form id="search-form" action="">
+      <label class="label" for="search">Search term:</label>
+      <br/>
+      <input class="input" id="search" type="search" name="search" placeholder="e.g. About us" autocomplete="off">
+      <ul class="list  list--results" id="list">
+
+      </ul>
+    </form>
+    <script type="text/javascript" src="./src/fetch.js"></script>
+    <script type="text/javascript" src="./src/search.js"></script>
+    <script type="text/javascript">
+      const search = new jekyllSearch('https://alembic.darn.es/assets/search.json', '#search', '#list');
+      search.init();
+    </script>
+    <noscript>Please enable JavaScript to use the search form.</noscript>
+  </body>
+</html>
