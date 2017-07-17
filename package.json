@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/daviddarnes/jekyll-search-js/issues"
   },
-  "homepage": "https://github.com/daviddarnes/jekyll-search-js#readme"
+  "homepage": "https://github.com/daviddarnes/jekyll-search-js#readme",
+  "dependencies": {
+    "whatwg-fetch": "^2.0.3"
+  }
 }
