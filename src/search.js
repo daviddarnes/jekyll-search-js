@@ -3,25 +3,25 @@ class jekyllSearch {
     this.dataSource = dataSource;
     this.searchField = document.querySelector(searchField);
     this.resultsList = document.querySelector(resultsList);
+    this.displayResults = this.displayResults.bind(this);
   }
 
   fetchedData() {
-    const items = [];
-    fetch(this.dataSource)
+    return fetch(this.dataSource)
       .then(blob => blob.json())
-      .then(data => items.push(...data))
-    return items;
   }
 
-  findResults() {
-    return this.fetchedData().filter(item => {
+  async findResults() {
+    const data = await this.fetchedData();
+    return data.filter(item => {
       const regex = new RegExp(this.searchField.value, 'gi');
       return item.title.match(regex) || item.content.match(regex);
-    })
+    });
   }
 
-  displayResults() {
-    const html = this.findResults().map(item => {
+  async displayResults() {
+    const results = await this.findResults();
+    const html = results.map(item => {
       return `
         <li class="item  item--result">
             <article class="article">
@@ -30,7 +30,7 @@ class jekyllSearch {
             </article>
         </li>`;
     }).join('');
-    if ((this.findResults().length == 0) || (this.searchField.value == '')) {
+    if ((results.length == 0) || (this.searchField.value == '')) {
       this.resultsList.innerHTML = `<p>Sorry, nothing was found</p>`;
     } else {
       this.resultsList.innerHTML = html;
