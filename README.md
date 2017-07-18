@@ -6,12 +6,12 @@
 1. Download the source files (`src/`) or install with npm
 2. Drop these files into your `assets/` directory (or preferred directory)
 3. Link the `search.js` file and `fetch.js` polyfill:
-  ```
+  ``` js
   <script type="text/javascript" src="./src/fetch.js"></script>
   <script type="text/javascript" src="./src/search.js"></script>
   ```
 4. Initialise a new search:
-  ```
+  ``` js
   <script type="text/javascript">
     // New search using example options
     const search = new jekyllSearch(
@@ -27,7 +27,7 @@
   ```
 
 ## Options
-```
+``` js
 const search = new jekyllSearch(
   'https://alembic.darn.es/assets/search.json', // Your data source, can be relative or absolute
   '#search', // The selector of your search input field
