@@ -1,8 +1,10 @@
 class jekyllSearch {
-  constructor(dataSource, searchField, resultsList) {
+  constructor(dataSource, searchField, resultsList, siteURL) {
     this.dataSource = dataSource;
     this.searchField = document.querySelector(searchField);
     this.resultsList = document.querySelector(resultsList);
+    this.siteURL = siteURL;
+
     this.displayResults = this.displayResults.bind(this);
   }
 
@@ -23,9 +25,11 @@ class jekyllSearch {
     const results = await this.findResults();
     const html = results.map(item => {
       return `
-        <li class="item  item--result">
-            <article class="article">
-                <h4><a href="${item.url}">${item.title}</a></h4>
+        <li class="result">
+            <article class="result__article  article">
+                <h4>
+                  <a href="${this.siteURL + item.url}">${item.title}</a>
+                </h4>
                 <p>${item.excerpt}</p>
             </article>
         </li>`;

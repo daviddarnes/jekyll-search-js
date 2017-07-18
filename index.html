@@ -16,6 +16,7 @@
         "Droid Sans", "Helvetica Neue", sans-serif;
     }
     form {
+      text-align: left;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -25,6 +26,11 @@
     input {
       font-family: inherit;
       font-size: inherit;
+      width: 100%;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
     }
   </style>
   <body>
@@ -32,7 +38,7 @@
     <form id="search-form" action="">
       <label class="label" for="search">Search term:</label>
       <br/>
-      <input class="input" id="search" type="search" name="search" placeholder="e.g. About us" autocomplete="off">
+      <input class="input" id="search" type="text" name="search" placeholder="e.g. History of" autocomplete="off">
       <ul class="list  list--results" id="list">
 
       </ul>
@@ -40,7 +46,12 @@
     <script type="text/javascript" src="./src/fetch.js"></script>
     <script type="text/javascript" src="./src/search.js"></script>
     <script type="text/javascript">
-      const search = new jekyllSearch('https://alembic.darn.es/assets/search.json', '#search', '#list');
+      const search = new jekyllSearch(
+        'https://alembic.darn.es/assets/search.json',
+        '#search',
+        '#list',
+        'https://alembic.darn.es'
+      );
       search.init();
     </script>
     <noscript>Please enable JavaScript to use the search form.</noscript>
