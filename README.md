@@ -6,12 +6,12 @@
 1. Download the source files (`src/`) or install with npm
 2. Drop these files into your `assets/` directory (or preferred directory)
 3. Link the `search.js` file and `fetch.js` polyfill:
-  ``` js
+  ``` html
   <script type="text/javascript" src="./src/fetch.js"></script>
   <script type="text/javascript" src="./src/search.js"></script>
   ```
 4. Initialise a new search:
-  ``` js
+  ``` html
   <script type="text/javascript">
 
     // New search using example options
