@@ -13,6 +13,7 @@
 4. Initialise a new search:
   ``` js
   <script type="text/javascript">
+
     // New search using example options
     const search = new jekyllSearch(
       'https://alembic.darn.es/assets/search.json',
@@ -21,6 +22,7 @@
       'https://alembic.darn.es'
     );
 
+    // Initialise
     search.init();
 
   </script>
