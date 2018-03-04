@@ -1,11 +1,11 @@
 class jekyllSearch {
   constructor(dataSource, searchField, resultsList, siteURL) {
-    this.dataSource = dataSource;
-    this.searchField = document.querySelector(searchField);
-    this.resultsList = document.querySelector(resultsList);
-    this.siteURL = siteURL;
+    this.dataSource = dataSource
+    this.searchField = document.querySelector(searchField)
+    this.resultsList = document.querySelector(resultsList)
+    this.siteURL = siteURL
 
-    this.displayResults = this.displayResults.bind(this);
+    this.displayResults = this.displayResults.bind(this)
   }
 
   fetchedData() {
@@ -14,15 +14,15 @@ class jekyllSearch {
   }
 
   async findResults() {
-    const data = await this.fetchedData();
+    const data = await this.fetchedData()
     return data.filter(item => {
-      const regex = new RegExp(this.searchField.value, 'gi');
-      return item.title.match(regex) || item.content.match(regex);
-    });
+      const regex = new RegExp(this.searchField.value, 'gi')
+      return item.title.match(regex) || item.content.match(regex)
+    })
   }
 
   async displayResults() {
-    const results = await this.findResults();
+    const results = await this.findResults()
     const html = results.map(item => {
       return `
         <li class="result">
@@ -32,21 +32,30 @@ class jekyllSearch {
                 </h4>
                 <p>${item.excerpt}</p>
             </article>
-        </li>`;
-    }).join('');
+        </li>`
+    }).join('')
     if ((results.length == 0) || (this.searchField.value == '')) {
-      this.resultsList.innerHTML = `<p>Sorry, nothing was found</p>`;
+      this.resultsList.innerHTML = `<p>Sorry, nothing was found</p>`
     } else {
-      this.resultsList.innerHTML = html;
+      this.resultsList.innerHTML = html
     }
   }
 
   init() {
-    this.searchField.addEventListener('keyup', this.displayResults);
+    const url = new URL(document.location)
+    if (url.searchParams.get("search")) {
+      this.searchField.value = url.searchParams.get("search")
+      this.displayResults()
+    }
+    this.searchField.addEventListener('keyup', () => {
+      this.displayResults()
+      url.searchParams.set("search", this.searchField.value)
+      window.history.pushState('', '', url.href)
+    })
     this.searchField.addEventListener('keypress', event => {
       if (event.keyCode == 13) {
-        event.preventDefault();
+        event.preventDefault()
       }
-    });
+    })
   }
 }
