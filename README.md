@@ -1,6 +1,8 @@
 # jekyll-search-js
 🔍  Search through your jekyll pages, posts, or any collection the ES6 way. [See a demo](https://daviddarnes.github.io/jekyll-search-js/)
 
+[<img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" width="217"/>](https://buymeacoffee.com/daviddarnes#support)
+
 ## Installation
 
 1. Download the source files (`src/`) or install with npm
