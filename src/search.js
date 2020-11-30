@@ -50,7 +50,7 @@ class jekyllSearch {
     this.searchField.addEventListener('keyup', () => {
       this.displayResults()
       url.searchParams.set("search", this.searchField.value)
-      window.history.pushState('', '', url.href)
+      window.history.replaceState('', '', url.href)
     })
     this.searchField.addEventListener('keypress', event => {
       if (event.keyCode == 13) {
